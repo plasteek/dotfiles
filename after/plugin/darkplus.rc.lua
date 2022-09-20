@@ -1,0 +1,2 @@
+-- vim.cmd[[colorscheme darkplus]]
+-- vim.cmd("autocmd vimenter * hi normal ctermbg=none guibg=none")
