@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\colorbuddy.nvim",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
   },
+  ["darkplus.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\darkplus.nvim",
+    url = "https://github.com/martinsione/darkplus.nvim"
+  },
   fzf = {
     loaded = true,
     path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\fzf",
@@ -148,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["monokai.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\monokai.nvim",
+    url = "https://github.com/tanvirtin/monokai.nvim"
   },
   ["neosolarized.nvim"] = {
     loaded = true,
@@ -239,6 +249,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
+  },
   ["typescript.nvim"] = {
     loaded = true,
     path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\typescript.nvim",
@@ -248,6 +263,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vscode.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vscode.nvim",
+    url = "https://github.com/Mofiqul/vscode.nvim"
   },
   ["zen-mode.nvim"] = {
     loaded = true,

@@ -5,11 +5,12 @@ end
 
 local augroup_format = vim.api.nvim_create_augroup("Format", {
     clear = true
-})  
-local sources = {null_ls.builtins.diagnostics.eslint_d.with({
-    diagnostics_format = '[eslint] #{m}\n(#{c})'
-}),  null_ls.builtins.diagnostics.fish}
+})
+-- local sources = {null_ls.builtins.diagnostics.eslint_d.with({
+--     diagnostics_format = '[eslint] #{m}\n(#{c})'
+-- }), null_ls.builtins.diagnostics.fish, null_ls.builtins.formatting.prettierd}
 
+local sources = {null_ls.builtins.formatting.prettierd}
 null_ls.setup({
     sources = sources,
     on_attach = function(client, bufnr)
@@ -27,10 +28,10 @@ null_ls.setup({
                             return client.name == "null-ls"
                         end,
                         bufnr = 0,
-                        sync= false,
+                        sync = false
                     })
                 end
             })
         end
-    end,
+    end
 })

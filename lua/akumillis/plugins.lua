@@ -28,10 +28,6 @@ packer.startup(function(use)
     use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
     use 'hrsh7th/nvim-cmp' -- Completion
     use 'neovim/nvim-lspconfig' -- LSP
-    use {
-        'embark-theme/vim',
-        as = 'embark'
-    }
     -- use({
     --     'neovim/nvim-lspconfig',
     --     commit = '51775b12cfbf1b6462c7b13cd020cc09e6767aea'
@@ -44,6 +40,7 @@ packer.startup(function(use)
     use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
+    use 'folke/tokyonight.nvim'
 
     use 'glepnir/lspsaga.nvim' -- LSP 
     use 'L3MON4D3/LuaSnip'

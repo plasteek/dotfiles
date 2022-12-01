@@ -35,3 +35,12 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 
 -- Disable ctrl z
 keymap.set('n', '<C-z>', '<nop>');
+
+-- greatest remap ever
+keymap.set("n", "<leader>p", "\"_dP", {
+    noremap = true,
+    silent = true
+});
+
+-- next greatest remap ever : asbjornHaland
+keymap.set("n", "<leader>y", "\"+y")
