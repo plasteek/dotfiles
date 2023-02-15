@@ -2,6 +2,7 @@ require('akumillis/base')
 require('akumillis/highlights')
 require('akumillis/maps')
 require('akumillis/plugins')
+require'nvim-treesitter.install'.compilers = {'zig'}
 
 local has = function(x)
     return vim.fn.has(x) == 1

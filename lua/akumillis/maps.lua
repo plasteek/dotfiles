@@ -44,3 +44,6 @@ keymap.set("n", "<leader>p", "\"_dP", {
 
 -- next greatest remap ever : asbjornHaland
 keymap.set("n", "<leader>y", "\"+y")
+
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")

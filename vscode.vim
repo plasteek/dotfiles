@@ -60,3 +60,6 @@ nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
 
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+
