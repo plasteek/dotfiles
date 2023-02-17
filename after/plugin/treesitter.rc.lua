@@ -1,3 +1,5 @@
+require'nvim-treesitter.install'.compilers = {"clang"}
+
 local status, ts = pcall(require, "nvim-treesitter.configs")
 if (not status) then
     return

@@ -6,9 +6,9 @@ end
 lualine.setup {
     options = {
         icons_enabled = true,
-        -- theme = 'solarized_dark',
+        theme = 'solarized_dark',
         -- theme = 'tokyonight',
-        theme = 'gruvbox_dark',
+        -- theme = 'gruvbox_dark',
         -- theme = 'auto',
         -- theme = 'vscode',
         -- theme = 'darkplus',
