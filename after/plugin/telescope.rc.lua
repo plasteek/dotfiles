@@ -106,7 +106,7 @@ telescope.setup {
 
                                 -- old_path:rename{
                                 --     new_name = new_path.filename
-                                -- }
+                                -- }w
 
                                 typescript.renameFile(old_name, new_path.filename);
 
