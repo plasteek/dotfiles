@@ -4,6 +4,7 @@ if (not status) then
 end
 local actions = require('telescope.actions')
 local builtin = require("telescope.builtin")
+local typescript = require('typescript')
 local function telescope_buffer_dir()
     return vim.fn.expand('%:p:h')
 end
@@ -12,7 +13,6 @@ local fb_actions = require"telescope".extensions.file_browser.actions
 
 local fb_utils = require "telescope._extensions.file_browser.utils"
 local action_state = require "telescope.actions.state"
-local action_utils = require "telescope.actions.utils"
 local Path = require "plenary.path"
 
 telescope.setup {
@@ -108,13 +108,13 @@ telescope.setup {
                                 --     new_name = new_path.filename
                                 -- }
 
-                                require('typescript').renameFile(old_name, new_path.filename);
+                                typescript.renameFile(old_name, new_path.filename);
 
-                                -- if not new_path:is_dir() then
-                                --     fb_utils.rename_buf(old_name, new_path:absolute())
-                                -- else
-                                --     fb_utils.rename_dir_buf(old_name, new_path:absolute())
-                                -- end
+                                if not new_path:is_dir() then
+                                    fb_utils.rename_buf(old_name, new_path:absolute())
+                                else
+                                    fb_utils.rename_dir_buf(old_name, new_path:absolute())
+                                end
 
                                 -- persist multi selections unambiguously by only removing renamed entry
                                 if current_picker:is_multi_selected(entry) then

@@ -5,6 +5,9 @@ end
 local lspkind = require 'lspkind'
 
 cmp.setup({
+    performance = {
+        debounce = 150
+    },
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body)
@@ -30,6 +33,9 @@ cmp.setup({
             with_text = false,
             maxwidth = 50
         })
+    },
+    experimental = {
+        ghost_text = true
     }
 })
 
