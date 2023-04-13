@@ -92,7 +92,6 @@ function onRename(prompt_bufnr)
                     new_name = new_path.filename
                 }
 
-                print(new_path:is_dir())
                 if not new_path:is_dir() then
                     fb_utils.rename_buf(old_name, new_path:absolute())
                 else
