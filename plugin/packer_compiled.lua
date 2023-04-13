@@ -267,11 +267,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\typescript.nvim",
     url = "https://github.com/jose-elias-alvarez/typescript.nvim"
   },
-  ["vim-hexokinase"] = {
-    loaded = true,
-    path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-hexokinase",
-    url = "https://github.com/rrethy/vim-hexokinase"
-  },
   ["vim-surround"] = {
     loaded = true,
     path = "C:\\Users\\storm\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",

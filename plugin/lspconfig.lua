@@ -97,6 +97,11 @@ typescript.setup {
 --     }
 -- }
 
+nvim_lsp.pyright.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
 nvim_lsp.flow.setup {
     on_attach = on_attach,
     capabilities = capabilities
@@ -124,7 +129,9 @@ nvim_lsp.lua_ls.setup {
     }
 }
 
-nvim_lsp.tailwindcss.setup {}
+nvim_lsp.tailwindcss.setup {
+    on_attach = on_attach
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
