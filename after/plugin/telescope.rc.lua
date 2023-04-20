@@ -79,14 +79,16 @@ function onRename(prompt_bufnr)
 
             -- rename changes old_name in place
             local old_name = old_path:absolute()
-            local is_ts = string.match(old_name, ".ts")
-            local is_tsx = string.match(old_name, ".tsx")
+            local is_ts = string.match(old_name, "(\\.ts)$")
+            local is_tsx = string.match(old_name, "(\\.tsx)$")
 
-            local is_js = string.match(old_name, ".js")
-            local is_jsx = string.match(old_name, ".jsx")
+            local is_js = string.match(old_name, "(\\.js)$")
+            local is_jsx = string.match(old_name, "(\\.jsx)$")
 
             if is_ts or is_tsx or is_js or is_jsx then
+                print(old_name)
                 typescript.renameFile(old_name, new_path.filename);
+                print(is_js, is_jsx, is_ts, is_tsx)
             else
                 old_path:rename{
                     new_name = new_path.filename
