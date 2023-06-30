@@ -54,7 +54,9 @@ packer.startup(function(use)
     }
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'kyazdani42/nvim-web-devicons' -- File icons
-    use 'nvim-telescope/telescope.nvim'
+    -- use 'nvim-telescope/telescope.nvim'
+    use({'nvim-telescope/telescope.nvim' -- commit = '2c573b9d12f421cec74a215f79b25591fe083352'
+    })
     use 'nvim-telescope/telescope-file-browser.nvim'
     use 'windwp/nvim-autopairs'
     use 'windwp/nvim-ts-autotag'
@@ -82,4 +84,6 @@ packer.startup(function(use)
             require("tailwindcss-colors").setup()
         end
     }
+
+    use 'pantharshit00/vim-prisma'
 end)

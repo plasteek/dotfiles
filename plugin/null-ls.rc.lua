@@ -14,7 +14,7 @@ local sources = {null_ls.builtins.formatting.prettierd.with({
     stdin = true,
     env = {string.format('PRETTIERD_DEFAULT_CONFIG=%s',
         vim.fn.expand('~/.config/nvim/utils/linter-config/.prettierrc.json'))}
-})}
+}), null_ls.builtins.formatting.prismaFmt}
 null_ls.setup({
     sources = sources,
     on_attach = function(client, bufnr)
