@@ -28,15 +28,7 @@ packer.startup(function(use)
     use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
     use 'hrsh7th/nvim-cmp' -- Completion
     use 'neovim/nvim-lspconfig' -- LSP
-    -- use({
-    --     'neovim/nvim-lspconfig',
-    --     commit = '51775b12cfbf1b6462c7b13cd020cc09e6767aea'
-    -- }) -- LSP
     use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-    -- use({
-    --     'jose-elias-alvarez/null-ls.nvim', -- DK why still don't work even though the lspconfig is the latest, this is due to the lspconfig not accepting function
-    --     commit = '76d0573fc159839a9c4e62a0ac4f1046845cdd50'
-    -- }) -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
     use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
@@ -52,11 +44,7 @@ packer.startup(function(use)
     use 'L3MON4D3/LuaSnip'
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
-            require('nvim-treesitter.install').update({
-                with_sync = true
-            })
-        end
+        run = ':TSUpdate'
     }
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'kyazdani42/nvim-web-devicons' -- File icons
@@ -78,4 +66,16 @@ packer.startup(function(use)
 
     use 'lewis6991/gitsigns.nvim'
     use 'dinhhuy258/git.nvim' -- For git blame & browse
+    use {
+        "themaxmarchuk/tailwindcss-colors.nvim",
+        -- load only on require("tailwindcss-colors")
+        module = "tailwindcss-colors",
+        -- run the setup function after plugin is loaded 
+        config = function()
+            -- pass config options here (or nothing to use defaults)
+            require("tailwindcss-colors").setup()
+        end
+    }
+
+    use 'pantharshit00/vim-prisma'
 end)

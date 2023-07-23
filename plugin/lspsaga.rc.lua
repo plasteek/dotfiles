@@ -6,6 +6,12 @@ end
 saga.setup {
     server_filetype_map = {
         typescript = 'typescript'
+    },
+    colors = {
+        normal_bg = '#002b36'
+    },
+    symbol_in_winbar = {
+        enable = false
     }
 }
 

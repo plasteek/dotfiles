@@ -4,10 +4,113 @@ if (not status) then
 end
 local actions = require('telescope.actions')
 local builtin = require("telescope.builtin")
+local typescript = require('typescript')
 local function telescope_buffer_dir()
     return vim.fn.expand('%:p:h')
 end
+
 local fb_actions = require"telescope".extensions.file_browser.actions
+
+local fb_utils = require "telescope._extensions.file_browser.utils"
+local action_state = require "telescope.actions.state"
+local Path = require "plenary.path"
+
+function onRename(prompt_bufnr)
+    local current_picker = action_state.get_current_picker(prompt_bufnr)
+    local quiet = current_picker.finder.quiet
+    local selections = fb_utils.get_selected_files(prompt_bufnr, false)
+
+    local parent_dir = Path:new(current_picker.finder.path):parent()
+    if not vim.tbl_isempty(selections) then
+        fb_actions.batch_rename(prompt_bufnr, selections)
+    else
+        local entry = action_state.get_selected_entry()
+        if not entry then
+            fb_utils.notify("action.rename", {
+                msg = "No selection to be renamed!",
+                level = "WARN"
+            })
+            return
+        end
+        local old_path = Path:new(entry[1])
+        -- "../" aka parent_dir more common so test first
+        if old_path.filename == parent_dir.filename then
+            fb_utils.notify("action.rename", {
+                msg = "Please select a valid file or folder!",
+                level = "WARN",
+                quiet = quiet
+            })
+            return
+        end
+        vim.ui.input({
+            prompt = "Insert a new name: ",
+            default = old_path:absolute(),
+            completion = "file"
+        }, function(file)
+            vim.cmd [[ redraw ]] -- redraw to clear out vim.ui.prompt to avoid hit-enter prompt
+            if file == "" or file == nil then
+                fb_utils.notify("action.rename", {
+                    msg = "Renaming aborted!",
+                    level = "WARN",
+                    quiet = quiet
+                })
+                return
+            end
+            local new_path = Path:new(file)
+
+            if old_path.filename == new_path.filename then
+                fb_utils.notify("action.rename", {
+                    msg = string.format("Name of selection unchanged! Skipping.",
+                        new_path.filename:sub(#new_path:parent().filename + 2)),
+                    level = "WARN",
+                    quiet = quiet
+                })
+                return
+            end
+            if new_path:exists() then
+                fb_utils.notify("action.rename", {
+                    msg = string.format("%s already exists! Skipping.",
+                        new_path.filename:sub(#new_path:parent().filename + 2)),
+                    level = "WARN",
+                    quiet = quiet
+                })
+                return
+            end
+
+            -- rename changes old_name in place
+            local old_name = old_path:absolute()
+            local is_ts = string.match(old_name, "(\\.ts)$")
+            local is_tsx = string.match(old_name, "(\\.tsx)$")
+
+            local is_js = string.match(old_name, "(\\.js)$")
+            local is_jsx = string.match(old_name, "(\\.jsx)$")
+
+            if is_ts or is_tsx or is_js or is_jsx then
+                print(old_name)
+                typescript.renameFile(old_name, new_path.filename);
+                print(is_js, is_jsx, is_ts, is_tsx)
+            else
+                old_path:rename{
+                    new_name = new_path.filename
+                }
+
+                if not new_path:is_dir() then
+                    fb_utils.rename_buf(old_name, new_path:absolute())
+                else
+                    fb_utils.rename_dir_buf(old_name, new_path:absolute())
+                end
+            end
+
+            -- persist multi selections unambiguously by only removing renamed entry
+            if current_picker:is_multi_selected(entry) then
+                current_picker._multi:drop(entry)
+            end
+            fb_utils.selection_callback(current_picker, new_path:absolute())
+            current_picker:refresh(current_picker.finder)
+        end)
+    end
+end
+
 telescope.setup {
     defaults = {
         mappings = {
@@ -32,6 +135,8 @@ telescope.setup {
                     -- your custom normal mode mappings
                     ["N"] = fb_actions.create,
                     ["h"] = fb_actions.goto_parent_dir,
+                    -- ['r'] = fb_actions.rename,
+                    ['r'] = onRename,
                     ["/"] = function()
                         vim.cmd('startinsert')
                     end

@@ -14,17 +14,21 @@ local protocol = require('vim.lsp.protocol')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
+
+local augroup_format = vim.api.nvim_create_augroup("Format", {
+    clear = true
+})
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
 
-    local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-    end
-
     -- Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
     local opts = {
@@ -33,11 +37,10 @@ local on_attach = function(client, bufnr)
     }
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    -- buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-
 end
 
 protocol.CompletionItemKind = {'', -- Text
@@ -68,7 +71,7 @@ protocol.CompletionItemKind = {'', -- Text
 }
 
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 typescript.setup {
     disable_commands = false,
@@ -87,19 +90,32 @@ typescript.setup {
 --     filetypes = {"typescript", "typescriptreact", "typescript.tsx"},
 --     -- cmd = {"typescript-language-server", "--stdio"},
 --     -- cmd = {"tsserver"},
---     capabilities = capabilities
+--     capabilities = capabilities,
+
+--     commands = {
+--         RenameFile = {
+--             rename_file,
+--             description = "Rename File"
+--         }
+--     }
 -- }
+
+nvim_lsp.pyright.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
 
 nvim_lsp.flow.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
 
-nvim_lsp.sourcekit.setup {
-    on_attach = on_attach
+nvim_lsp.astro.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
     on_attach = on_attach,
     settings = {
         Lua = {
@@ -114,10 +130,31 @@ nvim_lsp.sumneko_lua.setup {
                 checkThirdParty = false
             }
         }
-    }
+    },
+    capabilities = capabilities
 }
 
-nvim_lsp.tailwindcss.setup {}
+nvim_lsp.tailwindcss.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+nvim_lsp.prismals.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {"prisma"},
+    settings = {
+        prisma = {
+            prismaFmtBinPath = ""
+        }
+    }
+}
+-- nvim_lsp.prismals.setup({})
+
+nvim_lsp.hls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
