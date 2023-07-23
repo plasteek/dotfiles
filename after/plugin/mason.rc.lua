@@ -10,5 +10,7 @@ end
 mason.setup({})
 
 lspconfig.setup {
-    ensure_installed = {"lua_ls", "tailwindcss", "prismals"}
+    ensure_installed = {"lua_ls", "tailwindcss", "prismals", "tsserver", "pyright", "hls"},
+    -- ensure_installed = {"lua_ls", "tailwindcss", "prismals", "tsserver", "pyright", "hls", "prettier_d"},
+    automatic_installation = true
 }
