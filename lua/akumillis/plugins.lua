@@ -85,5 +85,18 @@ packer.startup(function(use)
         end
     }
 
+    use {
+        "catppuccin/nvim",
+        as = "catppuccin"
+    }
     use 'pantharshit00/vim-prisma'
+    use "rebelot/kanagawa.nvim"
+    use "EdenEast/nightfox.nvim" -- Packer
+
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine'
+    })
+    use {'nyoom-engineering/oxocarbon.nvim'}
+
 end)

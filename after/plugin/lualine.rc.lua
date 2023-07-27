@@ -6,7 +6,8 @@ end
 lualine.setup {
     options = {
         icons_enabled = true,
-        theme = 'solarized_dark',
+        theme = 'catppuccin',
+        -- theme = 'solarized_dark',
         -- theme = 'tokyonight',
         -- theme = 'gruvbox_dark',
         -- theme = 'auto',

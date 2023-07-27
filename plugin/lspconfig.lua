@@ -87,14 +87,14 @@ typescript.setup {
 --     filetypes = {"typescript", "typescriptreact", "typescript.tsx"},
 --     -- cmd = {"typescript-language-server", "--stdio"},
 --     -- cmd = {"tsserver"},
---     capabilities = capabilities,
+--     capabilities = capabilities
 
---     commands = {
---         RenameFile = {
---             rename_file,
---             description = "Rename File"
---         }
---     }
+--     -- commands = {
+--     --     RenameFile = {
+--     --         rename_file,
+--     --         description = "Rename File"
+--     --     }
+--     -- }
 -- }
 
 nvim_lsp.pyright.setup {
@@ -111,24 +111,24 @@ nvim_lsp.sourcekit.setup {
     on_attach = on_attach
 }
 
-nvim_lsp.lua_ls.setup {
-    on_attach = on_attach,
-    settings = {
-        Lua = {
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim'}
-            },
-
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false
-            }
-        }
-    },
-    capabilities = capabilities
-}
+-- nvim_lsp.lua_ls.setup {
+--     on_attach = on_attach,
+--     settings = {
+--         Lua = {
+--             diagnostics = {
+--                 -- Get the language server to recognize the `vim` global
+--                 globals = {'vim'}
+--             },
+--
+--             workspace = {
+--                 -- Make the server aware of Neovim runtime files
+--                 library = vim.api.nvim_get_runtime_file("", true),
+--                 checkThirdParty = false
+--             }
+--         }
+--     },
+--     capabilities = capabilities
+-- }
 
 nvim_lsp.tailwindcss.setup {
     on_attach = on_attach,
@@ -140,10 +140,10 @@ nvim_lsp.prismals.setup {
     capabilities = capabilities
 }
 
-nvim_lsp.hls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
+-- nvim_lsp.hls.setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities
+-- }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,

@@ -8,14 +8,19 @@ local augroup_format = vim.api.nvim_create_augroup("Format", {
 })
 -- local sources = {null_ls.builtins.diagnostics.eslint_d.with({
 --     diagnostics_format = '[eslint] #{m}\n(#{c})'
--- }), null_ls.builtins.diagnostics.fish, null_ls.builtins.formatting.prettierd}
+-- }), null_ls.builtins.diagnostics.fish, null_ls.builtins.formatting.prettier}
 
-local sources = {null_ls.builtins.formatting.prettierd.with({
+local sources = {null_ls.builtins.diagnostics.eslint_d.with({
+    diagnostics_format = '[eslint] #{m}\n(#{c})'
+}), null_ls.builtins.diagnostics.fish, null_ls.builtins.formatting.prettierd.with({
     stdin = true,
-    env = {string.format('PRETTIERD_DEFAULT_CONFIG=%s',
-        vim.fn.expand('~/.config/nvim/utils/linter-config/.prettierrc.json'))}
+    env = {
+        PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json")
+    }
 }), null_ls.builtins.formatting.prismaFmt}
+
 null_ls.setup({
+    debug = true,
     sources = sources,
     on_attach = function(client, bufnr)
         if client.server_capabilities.documentFormattingProvider then
