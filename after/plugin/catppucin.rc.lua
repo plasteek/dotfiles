@@ -41,7 +41,6 @@ require("catppuccin").setup({
             surface2 = "#705867",
             surface1 = "#5A4551",
             surface0 = "#44313B",
-
             base = "#352939",
             mantle = "#211924",
             crust = "#1a1016"
@@ -59,6 +58,17 @@ require("catppuccin").setup({
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     }
 })
-
 -- setup must be called before loading
 vim.cmd.colorscheme "catppuccin"
+--
+local cb = require('colorbuddy.init')
+local Color = cb.Color
+local colors = cb.colors
+local Group = cb.Group
+local groups = cb.groups
+local styles = cb.styles
+Color.new('black', '#000000')
+Color.new('base', '#24273a')
+-- for lsp sage i think
+-- Group.new('Normal', colors.base, colors.NONE, styles.NONE)
+Group.new('NormalFloat', colors.NONE, colors.base, styles.NONE)

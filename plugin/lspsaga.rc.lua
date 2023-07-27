@@ -15,7 +15,11 @@ saga.setup({
     },
     outline = {
         layout = 'float'
+    },
+    colors = {
+        normal_bg = '#002b36'
     }
+
 })
 
 local diagnostic = require("lspsaga.diagnostic")
