@@ -54,12 +54,14 @@ require("catppuccin").setup({
         nvimtree = true,
         treesitter = true,
         notify = false,
-        mini = false
+        mini = false,
+        bufferline = true
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     }
 })
 -- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "catppuccin-macchiato"
+
 --
 local cb = require('colorbuddy.init')
 local Color = cb.Color

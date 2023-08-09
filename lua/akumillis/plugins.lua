@@ -87,7 +87,12 @@ packer.startup(function(use)
 
     use {
         "catppuccin/nvim",
-        as = "catppuccin"
+        as = "catppuccin",
+        config = function()
+            require("bufferline").setup {
+                highlights = require("catppuccin.groups.integrations.bufferline").get()
+            }
+        end
     }
     use 'pantharshit00/vim-prisma'
     use "rebelot/kanagawa.nvim"
