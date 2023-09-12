@@ -13,6 +13,8 @@ lualine.setup {
         -- theme = 'auto',
         -- theme = 'vscode',
         -- theme = 'darkplus',
+        -- theme = 'rose-pine',
+        -- theme = 'kanagawa',
         section_separators = {
             left = '',
             right = ''

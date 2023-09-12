@@ -42,7 +42,7 @@ packer.startup(function(use)
     use 'williamboman/mason-lspconfig.nvim'
     use 'folke/tokyonight.nvim'
 
-    use 'glepnir/lspsaga.nvim' -- LSP 
+    use 'glepnir/lspsaga.nvim' -- LSP
     use 'L3MON4D3/LuaSnip'
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -78,7 +78,7 @@ packer.startup(function(use)
         "themaxmarchuk/tailwindcss-colors.nvim",
         -- load only on require("tailwindcss-colors")
         module = "tailwindcss-colors",
-        -- run the setup function after plugin is loaded 
+        -- run the setup function after plugin is loaded
         config = function()
             -- pass config options here (or nothing to use defaults)
             require("tailwindcss-colors").setup()
@@ -103,5 +103,4 @@ packer.startup(function(use)
         as = 'rose-pine'
     })
     use {'nyoom-engineering/oxocarbon.nvim'}
-
 end)

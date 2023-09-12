@@ -1,3 +1,5 @@
+-- vim.opt.laststatus = 2 -- Or 3 for global statusline
+-- vim.opt.statusline = " %f %m %= %l:%c ♥ "
 -- require('rose-pine').setup({
 --     --- @usage 'auto'|'main'|'moon'|'dawn'
 --     variant = 'auto',
@@ -44,19 +46,33 @@
 --             bg = 'foam',
 --             blend = 10
 --         },
---         StatusLine = {
---             fg = 'love',
---             bg = 'love',
---             blend = 10
---         },
+--         StatusLine = { fg = "love", bg = "love", blend = 10 },
+--         StatusLineNC = { fg = "subtle", bg = "surface" },
 --         -- By default each group adds to the existing config.
 --         -- If you only want to set what is written in this config exactly,
 --         -- you can set the inherit option:
 --         Search = {
 --             bg = 'gold',
 --             inherit = false
---         }
+--         },
+--         TelescopeBorder = { fg = "highlight_high", bg = "none" },
+--         TelescopeNormal = { bg = "none" },
+--         TelescopePromptNormal = { bg = "base" },
+--         TelescopeResultsNormal = { fg = "subtle", bg = "none" },
+--         TelescopeSelection = { fg = "text", bg = "base" },
+--         TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
 --     }
 -- })
 -- -- Set colorscheme after options
 -- vim.cmd('colorscheme rose-pine')
+-- local cb = require('colorbuddy.init')
+-- local Color = cb.Color
+-- local colors = cb.colors
+-- local Group = cb.Group
+-- local groups = cb.groups
+-- local styles = cb.styles
+-- Color.new('black', '#000000')
+-- Color.new('base', require('rose-pine.palette').base)
+-- -- for lsp sage i think
+-- -- Group.new('Normal', colors.base, colors.NONE, styles.NONE)
+-- Group.new('NormalFloat', colors.NONE, colors.base, styles.NONE)
