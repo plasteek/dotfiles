@@ -1,0 +1,23 @@
+-- -- Use a custom markdown style (must be an absolute path)
+-- -- like '/Users/username/markdown.css' or expand('~/markdown.css')
+-- vim.g.mkdp_markdown_css = ''
+-- -- Preview page title
+-- -- ${name} will be replaced with the file name
+-- vim.g.mkdp_page_title = '「${name}」'
+-- -- Recognized filetypes
+-- -- these filetypes will have MarkdownPreview... commands
+-- vim.g.mkdp_filetypes = {'markdown', '.md', '.mdx'}
+-- -- Set default theme (dark or light)
+-- -- By default, the theme is defined according to the preferences of the system
+-- vim.g.mkdp_theme = 'dark'
+-- -- Define the OpenMarkdownPreview function
+-- function OpenMarkdownPreview(url)
+--     vim.fn.system("silent !firefox --new-window " .. url)
+-- end
+-- -- A custom Vim function name to open the preview page
+-- -- this function will receive the URL as a parameter
+-- -- default is empty
+-- -- Set g:mkdp_browserfunc to 'OpenMarkdownPreview'
+-- vim.g.mkdp_browserfunc = 'OpenMarkdownPreview'
+-- vim.g.NVIM_MKDP_LOG_FILE = '~/Desktop/mkdp-log.log'
+-- vim.g.NVIM_MKDP_LOG_LEVEL = 'debug'

@@ -64,10 +64,35 @@ packer.startup(function(use)
     use 'folke/zen-mode.nvim'
     use({
         "iamcco/markdown-preview.nvim",
-        run = function()
-            vim.fn["mkdp#util#install"]()
-        end
+        run = "cd app && yarn install",
+        setup = function()
+            vim.cmd([[
+                let $NVIM_MKDP_LOG_FILE = expand('~/mkdp-log.log')
+                let $NVIM_MKDP_LOG_LEVEL = 'debug'
+            ]])
+            vim.g.mkdp_browser = "msedge"
+            vim.g.mkdp_filetypes = {"markdown"}
+
+        end,
+        ft = {"markdown"}
     })
+    -- use({
+    --     "iamcco/markdown-preview.nvim",
+    --     setup = function()
+    --         -- Set browser
+    --         vim.g.mkdp_browser = "msedge"
+
+    --     end,
+    --     run = function()
+    --         vim.fn["mkdp#util#install"]()
+    --     end
+    -- })
+    use {
+        "ellisonleao/glow.nvim",
+        config = function()
+            require("glow").setup()
+        end
+    }
     use 'akinsho/nvim-bufferline.lua'
     use 'jose-elias-alvarez/typescript.nvim'
     -- use 'github/copilot.vim'
